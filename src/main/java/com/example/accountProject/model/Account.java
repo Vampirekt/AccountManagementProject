@@ -1,11 +1,12 @@
 package com.example.accountProject.model;
 
 import jakarta.persistence.*;
-import org.hibernate.Transaction;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -21,8 +22,20 @@ public class Account {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    @OneToMany(mappedBy = "Account", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     private Set<Transaction> transaction;
+
+    public Account(String id, BigDecimal balance, LocalDateTime creationDate, Customer customer, Set<Transaction> transaction) {
+        this.id = id;
+        this.balance = balance;
+        this.creationDate = creationDate;
+        this.customer = customer;
+        this.transaction = transaction;
+    }
+
+    public Account() {
+
+    }
 
     public String getId() {
         return id;
@@ -62,5 +75,18 @@ public class Account {
 
     public void setTransaction(Set<Transaction> transaction) {
         this.transaction = transaction;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return Objects.equals(id, account.id) && Objects.equals(balance, account.balance) && Objects.equals(creationDate, account.creationDate) && Objects.equals(customer, account.customer) && Objects.equals(transaction, account.transaction);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, balance, creationDate, customer);
     }
 }
