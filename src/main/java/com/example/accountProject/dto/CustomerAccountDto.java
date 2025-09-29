@@ -1,25 +1,22 @@
 package com.example.accountProject.dto;
 
-import com.example.accountProject.model.Customer;
 import com.example.accountProject.model.Transaction;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-public class AccountDto {
+public class CustomerAccountDto {
     private String id;
     private BigDecimal balance;
     private LocalDateTime creationDate;
-    private Set<Transaction> transaction;
-    private Customer customer;
+    private Set<TransactionDto> transaction;
 
-    public AccountDto(String id, BigDecimal balance, LocalDateTime creationDate, Set<Transaction> transaction, Customer customer) {
+    public CustomerAccountDto(String id, BigDecimal balance, LocalDateTime creationDate, Set<TransactionDto> transaction) {
         this.id = id;
         this.balance = balance;
         this.creationDate = creationDate;
         this.transaction = transaction;
-        this.customer = customer;
     }
 
     public String getId() {
@@ -46,20 +43,11 @@ public class AccountDto {
         this.creationDate = creationDate;
     }
 
-    public Set<Transaction> getTransaction() {
+    public Set<TransactionDto> getTransaction() {
         return transaction;
     }
 
-    public void setTransaction(Set<Transaction> transaction) {
+    public void setTransaction(Set<TransactionDto> transaction) {
         this.transaction = transaction;
     }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
 }

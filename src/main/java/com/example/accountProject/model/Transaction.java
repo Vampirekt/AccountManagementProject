@@ -74,7 +74,7 @@ public class Transaction {
         this.account = account;
     }
 
-    enum TransactionType{
+    public enum TransactionType{
         INITIAL, TRANSFER}
 
 }

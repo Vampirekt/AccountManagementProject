@@ -1,17 +1,15 @@
 package com.example.accountProject.dto;
 
-import com.example.accountProject.model.Account;
 
-import java.util.Set;
 
-public class CustomerDto {
+public class AccountCustomerDto {
     private String id;
-    private String firstname;
+    private String name;
     private String surname;
 
-    public CustomerDto(String id, String firstname, String surname) {
+    public AccountCustomerDto(String id, String name, String surname) {
         this.id = id;
-        this.firstname = firstname;
+        this.name = name;
         this.surname = surname;
     }
 
@@ -23,12 +21,12 @@ public class CustomerDto {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSurname() {
@@ -38,5 +36,4 @@ public class CustomerDto {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-
 }
