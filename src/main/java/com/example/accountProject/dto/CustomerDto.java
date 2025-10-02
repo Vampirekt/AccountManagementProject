@@ -9,10 +9,21 @@ public class CustomerDto {
     private String firstname;
     private String surname;
 
-    public CustomerDto(String id, String firstname, String surname) {
+    private Set<Account> accounts;
+
+    public CustomerDto(String id, String firstname, String surname,Set<Account> accounts) {
         this.id = id;
         this.firstname = firstname;
         this.surname = surname;
+        this.accounts = accounts;
+    }
+
+    public Set<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Set<Account> accounts) {
+        this.accounts = accounts;
     }
 
     public String getId() {
