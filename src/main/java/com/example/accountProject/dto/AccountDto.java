@@ -11,10 +11,10 @@ public class AccountDto {
     private String id;
     private BigDecimal balance;
     private LocalDateTime creationDate;
-    private Set<Transaction> transaction;
-    private Customer customer;
+    private Set<TransactionDto> transaction;
+    private AccountCustomerDto customer;
 
-    public AccountDto(String id, BigDecimal balance, LocalDateTime creationDate, Set<Transaction> transaction, Customer customer) {
+    public AccountDto(String id, BigDecimal balance, LocalDateTime creationDate, Set<TransactionDto> transaction, AccountCustomerDto customer) {
         this.id = id;
         this.balance = balance;
         this.creationDate = creationDate;
@@ -46,19 +46,19 @@ public class AccountDto {
         this.creationDate = creationDate;
     }
 
-    public Set<Transaction> getTransaction() {
+    public Set<TransactionDto> getTransaction() {
         return transaction;
     }
 
-    public void setTransaction(Set<Transaction> transaction) {
+    public void setTransaction(Set<TransactionDto> transaction) {
         this.transaction = transaction;
     }
 
-    public Customer getCustomer() {
+    public AccountCustomerDto getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(AccountCustomerDto customer) {
         this.customer = customer;
     }
 
