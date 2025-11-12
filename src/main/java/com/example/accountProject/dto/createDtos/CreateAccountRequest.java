@@ -1,4 +1,4 @@
-package com.example.accountProject.dto;
+package com.example.accountProject.dto.createDtos;
 
 import java.math.BigDecimal;
 

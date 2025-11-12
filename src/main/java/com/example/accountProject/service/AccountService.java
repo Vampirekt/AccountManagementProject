@@ -1,7 +1,8 @@
 package com.example.accountProject.service;
 
 import com.example.accountProject.dto.AccountDto;
-import com.example.accountProject.dto.CreateAccountRequest;
+import com.example.accountProject.dto.AccountDtoConverter;
+import com.example.accountProject.dto.createDtos.CreateAccountRequest;
 import com.example.accountProject.model.Account;
 import com.example.accountProject.model.Customer;
 import com.example.accountProject.repository.AccountRepository;
@@ -16,24 +17,33 @@ public class AccountService {
 
     private final AccountRepository accountRepository;
     private final CustomerService customerService;
-    private final TransactionService transactionService;
+    private final AccountDtoConverter accountDtoConverter;
 
-
-    public AccountService(AccountRepository accountRepository, CustomerService customerService, TransactionService transactionService) {
+    public AccountService(AccountRepository accountRepository,
+                          CustomerService customerService,
+                          AccountDtoConverter accountDtoConverter) {
         this.accountRepository = accountRepository;
         this.customerService = customerService;
-        this.transactionService = transactionService;
+        this.accountDtoConverter = accountDtoConverter;
     }
 
-    public AccountDto(CreateAccountRequest createAccountRequest){
+    public AccountDto createAccount(CreateAccountRequest createAccountRequest) {
+        // 1️⃣ Kunden aus DB holen
         Customer customer = customerService.findCustomerById(createAccountRequest.getCustomerId());
+
+        // 2️⃣ Neues Konto erzeugen
         Account account = new Account(
                 UUID.randomUUID().toString(),
                 createAccountRequest.getInitialBalance(),
                 LocalDateTime.now(),
                 customer,
-                new HashSet<>() // leere Transaktionsliste
+                new HashSet<>()
         );
-         return account;
+
+        // 3️⃣ In DB speichern
+        Account savedAccount = accountRepository.save(account);
+
+        // 4️⃣ DTO zurückgeben
+        return accountDtoConverter.convert(savedAccount);
     }
 }

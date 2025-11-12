@@ -3,12 +3,19 @@ package com.example.accountProject.dto;
 import com.example.accountProject.model.Customer;
 import org.springframework.stereotype.Component;
 
+import java.util.stream.Collectors;
+
 @Component
 public class CustomerDtoConverter {
-    public AccountCustomerDto convert(Customer from){
-        if(from==null){
-            return new AccountCustomerDto("","","");
+
+    public CustomerDto convert(Customer from) {
+        if (from == null) {
+            return new CustomerDto("", "", "",null);
         }
-        return new AccountCustomerDto(from.getId(), from.getFirstname(), from.getSurname());
+
+        return new CustomerDto(from.getId(),from.getFirstname(), from.getSurname(),from.getAccounts().stream()
+                .map(customerAccountDtoConverter::convert)
+                .collect(Collectors.toSet())
+        );
     }
 }
