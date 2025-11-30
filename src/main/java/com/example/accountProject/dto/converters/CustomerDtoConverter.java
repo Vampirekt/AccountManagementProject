@@ -1,5 +1,6 @@
-package com.example.accountProject.dto;
+package com.example.accountProject.dto.converters;
 
+import com.example.accountProject.dto.CustomerDto;
 import com.example.accountProject.model.Customer;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,7 @@ public class CustomerDtoConverter {
         }
 
         return new CustomerDto(from.getId(),from.getFirstname(), from.getSurname(),from.getAccounts().stream()
-                .map(customerAccountDtoConverter::convert)
+                .map(CustomerAccountDtoConverter::convert)
                 .collect(Collectors.toSet())
         );
     }

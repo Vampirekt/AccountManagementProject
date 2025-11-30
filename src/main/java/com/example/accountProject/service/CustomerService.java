@@ -1,7 +1,7 @@
 package com.example.accountProject.service;
 
 import com.example.accountProject.dto.CustomerDto;
-import com.example.accountProject.dto.CustomerDtoConverter;
+import com.example.accountProject.dto.converters.CustomerDtoConverter;
 import com.example.accountProject.dto.createDtos.CreateCustomerRequest;
 import com.example.accountProject.exception.CustomerNotFoundException;
 import com.example.accountProject.model.Customer;

@@ -1,7 +1,7 @@
 package com.example.accountProject.service;
 
 import com.example.accountProject.dto.AccountDto;
-import com.example.accountProject.dto.AccountDtoConverter;
+import com.example.accountProject.dto.converters.AccountDtoConverter;
 import com.example.accountProject.dto.createDtos.CreateAccountRequest;
 import com.example.accountProject.model.Account;
 import com.example.accountProject.model.Customer;

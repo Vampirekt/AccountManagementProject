@@ -1,9 +1,9 @@
-package com.example.accountProject.dto;
+package com.example.accountProject.dto.converters;
 
+import com.example.accountProject.dto.AccountDto;
 import com.example.accountProject.model.Account;
 import org.springframework.stereotype.Component;
 
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Component
